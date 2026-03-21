@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>शादी का निमंत्रण</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  width:100vw; height:100vh;
+  overflow:hidden;
+  background:#1a0500;
+  font-family:'Georgia',serif;
+  color:#fff;
+}
+
+/* ═══ SCREENS ═══ */
+.screen {
+  position:fixed; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.7s ease;
+  background:radial-gradient(ellipse at center,#3d1200 0%,#1a0500 70%);
+  padding:20px;
+  text-align:center;
+}
+.screen.active { opacity:1; pointer-events:all; }
+
+/* ═══ GANESH ═══ */
+.ganesh-big {
+  font-size:min(22vw,120px);
+  display:block; margin-bottom:15px;
+  animation:ganeshPulse 1.5s ease-in-out infinite alternate;
+}
+@keyframes ganeshPulse {
+  from{filter:drop-shadow(0 0 15px #ffcc00);transform:scale(1)}
+  to{filter:drop-shadow(0 0 50px #ff6b00) drop-shadow(0 0 80px #ffcc00);transform:scale(1.07)}
+}
+.mantra-text {
+  font-size:min(4.2vw,20px); color:#ffcc00;
+  line-height:2; text-shadow:0 0 12px rgba(255,204,0,0.6);
+}
+.flowers-row { font-size:min(5vw,24px); letter-spacing:6px; margin-top:12px; color:#ffcc00; }
+
+/* ═══ NAMES SCREEN ═══ */
+.name-label {
+  font-size:min(3.5vw,16px); color:#ffaa00;
+  opacity:0; transition:opacity 0.5s ease; margin-bottom:2px;
+}
+.name-anim {
+  font-size:min(9vw,50px); font-weight:bold; color:#ffcc00;
+  text-shadow:0 0 20px rgba(255,204,0,0.8);
+  opacity:0; transform:translateY(40px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+  line-height:1.4;
+}
+.name-anim.show { opacity:1; transform:translateY(0); }
+.name-anim.hide { opacity:0; transform:translateY(-40px); }
+.vs-heart {
+  font-size:min(8vw,40px); opacity:0;
+  transition:opacity 0.5s ease; margin:6px 0;
+}
+.vs-heart.show { opacity:1; }
+
+/* ═══ HEART SCREEN ═══ */
+.tap-hint {
+  font-size:min(3.8vw,17px); color:#ffaa00; margin-bottom:15px;
+  animation:blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.big-heart {
+  font-size:min(32vw,160px); cursor:pointer;
+  display:inline-block;
+  animation:heartBeat 1.2s ease-in-out infinite;
+  user-select:none; -webkit-tap-highlight-color:transparent;
+  transition:transform 0.15s;
+}
+.big-heart:active { transform:scale(0.82) !important; animation:none; }
+@keyframes heartBeat {
+  0%,100%{transform:scale(1)} 50%{transform:scale(1.15)}
+}
+
+/* ═══ INFO SCREEN ═══ */
+.flowers-burst {
+  font-size:min(7vw,34px); letter-spacing:5px; margin-bottom:10px;
+  animation:flowerBurst 0.6s ease both;
+}
+@keyframes flowerBurst {
+  from{transform:scale(0) rotate(-30deg);opacity:0}
+  to{transform:scale(1) rotate(0);opacity:1}
+}
+.info-name {
+  font-size:min(8vw,44px); font-weight:bold; color:#ffcc00;
+  text-shadow:0 0 20px rgba(255,204,0,0.8); margin-bottom:12px;
+  animation:slideUp 0.5s ease both;
+}
+.info-detail {
+  font-size:min(4vw,18px); color:#ffd9a0; line-height:2.2;
+  animation:slideUp 0.5s ease 0.2s both;
+}
+.info-detail span { display:block; }
+@keyframes slideUp {
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.next-hint {
+  margin-top:18px; font-size:min(3.5vw,15px); color:#ffaa00;
+  animation:blink 1.5s ease-in-out infinite;
+}
+
+/* ═══ LAST / INVITE SCREEN ═══ */
+#s-invite { justify-content:space-evenly; gap:0; }
+
+.invite-header {
+  font-size:min(4.2vw,19px); color:#ffcc00; font-weight:bold;
+  line-height:1.9; text-shadow:0 0 10px rgba(255,204,0,0.5);
+  animation:slideUp 0.6s ease both;
+}
+.invite-divider {
+  width:80%; height:2px;
+  background:linear-gradient(90deg,transparent,#ffcc00,transparent);
+  margin:6px auto;
+  animation:slideUp 0.6s ease 0.1s both;
+}
+.couple-big {
+  font-size:min(5.5vw,26px); color:#ffcc00; font-weight:bold;
+  animation:slideUp 0.6s ease 0.2s both;
+}
+.heart-beat-sm { animation:heartBeat 1.2s ease-in-out infinite; display:inline-block; }
+
+.date-card {
+  background:rgba(255,204,0,0.1); border:1.5px solid #ffcc00;
+  border-radius:10px; padding:8px 15px; width:90%;
+  animation:slideUp 0.6s ease 0.3s both;
+}
+.date-card .d-title { font-size:min(3.3vw,14px); color:#ffaa00; }
+.date-card .d-val   { font-size:min(5.5vw,24px); color:#ffcc00; font-weight:bold; }
+.date-card .d-sub   { font-size:min(3vw,12px); color:#ffd9a0; }
+
+.welcome-msg {
+  font-size:min(3.5vw,15px); color:#ffd9a0; line-height:1.8;
+  animation:slideUp 0.6s ease 0.4s both;
+}
+
+/* ── RAIN BUTTON ── */
+.rain-btn {
+  background:linear-gradient(135deg,#ff6b00,#ffcc00);
+  border:none; border-radius:50px;
+  padding:12px 28px;
+  font-size:min(4.5vw,19px); color:#4a1500; font-weight:bold;
+  cursor:pointer; user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  box-shadow:0 4px 20px rgba(255,204,0,0.4);
+  animation:slideUp 0.6s ease 0.5s both;
+  transition:transform 0.15s;
+}
+.rain-btn:active { transform:scale(0.92); }
+
+/* ═══ RAIN CANVAS ═══ */
+#rain-canvas {
+  position:fixed; inset:0;
+  pointer-events:none; z-index:999;
+}
+
+/* ═══ NAV DOTS ═══ */
+#nav-dots {
+  position:fixed; bottom:10px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; z-index:100;
+}
+.dot {
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,204,0,0.3);
+  transition:background 0.3s, transform 0.3s;
+  cursor:pointer;
+}
+.dot.on { background:#ffcc00; transform:scale(1.4); }
+</style>
+</head>
+<body>
+
+<canvas id="rain-canvas"></canvas>
+
+<!-- ══ S1: GANESH ══ -->
+<div class="screen active" id="s-ganesh">
+  <span class="ganesh-big">🙏</span>
+  <div class="mantra-text">
+    विघ्न हरण मंगल करण गौरी पुत्र गणेश<br>
+    प्रथम निमंत्रण आपको ब्रह्मा विष्णु महेश
+  </div>
+  <div class="flowers-row">🌸 🌺 🌼 🌸 🌺</div>
+</div>
+
+<!-- ══ S2: NAMES ══ -->
+<div class="screen" id="s-names">
+  <div class="name-label" id="lbl-boy">🎊 वर</div>
+  <div class="name-anim" id="nm-boy">हरिओम नरेटे</div>
+  <div class="vs-heart" id="vs-h">❤️</div>
+  <div class="name-anim" id="nm-girl">विमला ठाकुर</div>
+  <div class="name-label" id="lbl-girl">🎊 वधू</div>
+</div>
+
+<!-- ══ S3: HEART TAP ══ -->
+<div class="screen" id="s-heart">
+  <div class="tap-hint">👇 दिल को छुएं</div>
+  <div class="big-heart" id="heartBtn" onclick="heartTap()">❤️</div>
+  <div style="font-size:min(3.5vw,14px);color:#ffaa00;margin-top:10px;">हरिओम ❤️ विमला</div>
+</div>
+
+<!-- ══ S4: INFO ══ -->
+<div class="screen" id="s-info">
+  <div class="flowers-burst" id="info-flowers">🌸 🌺 🌼 🌺 🌸</div>
+  <div class="info-name" id="info-name"></div>
+  <div class="info-detail" id="info-detail"></div>
+  <div class="next-hint" id="next-hint"></div>
+</div>
+
+<!-- ══ S5: INVITE ══ -->
+<div class="screen" id="s-invite">
+  <span style="font-size:min(10vw,48px);animation:ganeshPulse 2s ease-in-out infinite alternate;">🙏</span>
+  <div class="invite-header">
+    आपको सादर आमंत्रित किया जाता है<br>
+    इस मंगलमय विवाह समारोह में
+  </div>
+  <div class="invite-divider"></div>
+  <div class="couple-big">
+    हरिओम नरेटे <span class="heart-beat-sm">❤️</span> विमला ठाकुर
+  </div>
+  <div class="invite-divider"></div>
+  <div class="date-card">
+    <div class="d-title">💍 विवाह समारोह</div>
+    <div class="d-val">12 मई 2026</div>
+    <div class="d-sub">मंगलवार</div>
+  </div>
+  <div class="date-card" style="margin-top:6px;">
+    <div class="d-title">🍽️ आशीर्वाद एवं स्वरुचि भोज</div>
+    <div class="d-val">14 मई 2026</div>
+    <div class="d-sub">गुरुवार</div>
+  </div>
+  <div class="welcome-msg">
+    "आपका स्वागत है। कृपया आकर इस आनंदमय अवसर को सुसज्जित करें।"
+  </div>
+  <button class="rain-btn" onclick="startRain()">❤️ शुभकामनाएं 🌸</button>
+</div>
+
+<!-- NAV DOTS -->
+<div id="nav-dots">
+  <div class="dot on" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+</div>
+
+<script>
+// ── SCREENS ──
+const SCREENS = ['s-ganesh','s-names','s-heart','s-invite'];
+let curScreen = 0;
+let heartCount = 0;
+let namesStarted = false;
+
+function goTo(idx) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const id = SCREENS[idx] || SCREENS[idx];
+  document.getElementById(id || 's-ganesh').classList.add('active');
+  curScreen = idx;
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('on', i === idx));
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx = SCREENS.indexOf(id);
+  if (idx >= 0) {
+    curScreen = idx;
+    document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('on', i === idx));
+  }
+}
+
+// ── AUTO: Ganesh → Names ──
+setTimeout(() => {
+  showScreen('s-names');
+  if (!namesStarted) { namesStarted = true; startNamesAnim(); }
+}, 3000);
+
+function startNamesAnim() {
+  const boy  = document.getElementById('nm-boy');
+  const girl = document.getElementById('nm-girl');
+  const vs   = document.getElementById('vs-h');
+  const lblB = document.getElementById('lbl-boy');
+  const lblG = document.getElementById('lbl-girl');
+
+  // reset
+  [boy,girl].forEach(el => { el.className='name-anim'; });
+  [vs,lblB,lblG].forEach(el => { el.classList.remove('show'); el.style.opacity=''; });
+
+  setTimeout(() => { lblB.classList.add('show'); boy.classList.add('show'); }, 400);
+  setTimeout(() => { vs.classList.add('show'); }, 1100);
+  setTimeout(() => { lblG.classList.add('show'); girl.classList.add('show'); }, 1800);
+
+  // fade out → heart screen
+  setTimeout(() => {
+    boy.classList.add('hide'); girl.classList.add('hide');
+    vs.style.opacity='0'; lblB.style.opacity='0'; lblG.style.opacity='0';
+  }, 4000);
+  setTimeout(() => { showScreen('s-heart'); }, 4900);
+}
+
+// ── HEART TAP ──
+function heartTap() {
+  heartCount++;
+
+  // trigger flower rain on heart tap
+  triggerRain(1.5);
+
+  const name   = heartCount % 2 === 1 ? "हरिओम नरेटे" : "विमला ठाकुर";
+  const detail = heartCount % 2 === 1
+    ? `<span>सुपुत्र श्री माखनलाल नरेटे</span>
+       <span>सुपौत्र श्री घुड़ो नरेटे</span>
+       <span style="margin-top:6px">📍 ग्राम परसगांव सर्रा</span>
+       <span>जिला छिंदवाड़ा</span>`
+    : `<span>सुपुत्री श्री सुरेश ठाकुर</span>
+       <span>सुपौत्री श्री पांचू ठाकुर</span>
+       <span style="margin-top:6px">📍 ग्राम रीवा</span>
+       <span>जिला रीवा</span>`;
+
+  const hint = heartCount % 2 === 1
+    ? "❤️ एक बार और छुएं — विमला जी के बारे में जानें"
+    : "🎊 नीचे देखें — शादी का निमंत्रण";
+
+  // re-trigger animations
+  const flowers = document.getElementById('info-flowers');
+  const infoName = document.getElementById('info-name');
+  const infoDet  = document.getElementById('info-detail');
+  flowers.style.animation = 'none';
+  infoName.style.animation = 'none';
+  infoDet.style.animation  = 'none';
+  void flowers.offsetWidth;
+  flowers.style.animation = '';
+  infoName.style.animation = '';
+  infoDet.style.animation  = '';
+
+  document.getElementById('info-name').textContent = name;
+  document.getElementById('info-detail').innerHTML = detail;
+  document.getElementById('next-hint').textContent = hint;
+
+  showScreen('s-info');
+
+  // after 2nd tap, auto go to invite after 3s
+  if (heartCount % 2 === 0) {
+    setTimeout(() => { showScreen('s-invite'); }, 3200);
+  }
+}
+
+// ── RAIN CANVAS ──
+const canvas = document.getElementById('rain-canvas');
+const ctx    = canvas.getContext('2d');
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+const EMOJIS = ['❤️','🌸','🌺','🌼','💛','🌹','✨','💕'];
+let particles = [];
+let rainTimer = null;
+let rainActive = false;
+
+function triggerRain(seconds) {
+  rainActive = true;
+  clearTimeout(rainTimer);
+  const end = Date.now() + seconds * 1000;
+  function spawn() {
+    if (Date.now() > end) { rainActive = false; return; }
+    for (let i = 0; i < 4; i++) spawnParticle();
+    setTimeout(spawn, 80);
+  }
+  spawn();
+}
+
+function startRain() {
+  triggerRain(4);
+}
+
+function spawnParticle() {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: -30,
+    vy: 2 + Math.random() * 3,
+    vx: (Math.random() - 0.5) * 2,
+    rot: Math.random() * 360,
+    rotV: (Math.random() - 0.5) * 4,
+    size: 20 + Math.random() * 24,
+    emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+    alpha: 1
+  });
+}
+
+function animRain() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles = particles.filter(p => p.y < canvas.height + 40 && p.alpha > 0.05);
+  particles.forEach(p => {
+    p.y   += p.vy;
+    p.x   += p.vx;
+    p.rot += p.rotV;
+    if (p.y > canvas.height * 0.7) p.alpha -= 0.02;
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot * Math.PI / 180);
+    ctx.font = p.size + 'px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(p.emoji, 0, 0);
+    ctx.restore();
+  });
+  requestAnimationFrame(animRain);
+}
+animRain();
+</script>
+</body>
+</html>
