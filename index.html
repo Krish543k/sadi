@@ -26,7 +26,7 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
 .mantra{font-size:min(4.2vw,19px);color:#ffcc00;line-height:2;text-shadow:0 0 10px rgba(255,204,0,.6);}
 .flowers{font-size:min(4vw,18px);letter-spacing:4px;color:#ffcc00;margin-top:8px;}
 
-/* NAMES SCREEN */
+/* NAMES */
 .nlabel{font-size:min(3.5vw,15px);color:#ffaa00;opacity:0;transition:opacity .5s;margin-bottom:2px;}
 .nanim{font-size:min(9vw,48px);font-weight:bold;color:#ffcc00;text-shadow:0 0 18px rgba(255,204,0,.8);opacity:0;transform:translateY(40px);transition:opacity .7s,transform .7s;line-height:1.4;}
 .nanim.show{opacity:1;transform:translateY(0);}
@@ -34,15 +34,8 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
 .vsh{font-size:min(8vw,38px);opacity:0;transition:opacity .5s;margin:6px 0;}
 .vsh.show{opacity:1;}
 
-/* PHOTO SCREEN */
-#s-photo{gap:0;justify-content:center;}
-.photo-wrap{
-  position:relative;width:min(55vw,220px);height:min(55vw,220px);
-  border-radius:50%;border:3px solid #ffcc00;
-  box-shadow:0 0 20px rgba(255,204,0,.5);
-  overflow:hidden;margin-bottom:10px;
-  animation:photoIn .7s ease both;
-}
+/* PHOTO */
+.photo-wrap{position:relative;width:min(52vw,200px);height:min(52vw,200px);border-radius:50%;border:3px solid #ffcc00;box-shadow:0 0 20px rgba(255,204,0,.5);overflow:hidden;margin-bottom:10px;animation:photoIn .7s ease both;}
 @keyframes photoIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
 .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;}
 .photo-name{font-size:min(6vw,28px);font-weight:bold;color:#ffcc00;text-shadow:0 0 15px rgba(255,204,0,.7);animation:sUp .5s ease .2s both;}
@@ -50,14 +43,14 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
 .photo-detail span{display:block;}
 @keyframes sUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* HEART SCREEN */
-.tap-hint{font-size:min(3.8vw,16px);color:#ffaa00;margin-bottom:10px;animation:blink 1.5s infinite;}
+/* HEART */
+.tap-hint{font-size:min(3.5vw,15px);color:#ffaa00;margin-bottom:8px;animation:blink 1.5s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.big-heart{font-size:min(28vw,140px);cursor:pointer;display:inline-block;animation:hbeat 1.2s ease-in-out infinite;user-select:none;-webkit-tap-highlight-color:transparent;}
+.big-heart{font-size:min(28vw,140px);display:inline-block;animation:hbeat 1.2s ease-in-out infinite;}
 @keyframes hbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.shayari{font-size:min(3.5vw,14px);color:#ffd9a0;margin-top:12px;line-height:1.9;font-style:italic;text-shadow:0 0 8px rgba(255,204,0,.4);padding:0 8px;}
+.shayari{font-size:min(3.5vw,14px);color:#ffd9a0;margin-top:10px;line-height:1.9;font-style:italic;text-shadow:0 0 8px rgba(255,204,0,.4);padding:0 8px;}
 
-/* INVITE SCREEN */
+/* INVITE */
 #s-invite{justify-content:space-evenly;}
 .swagat-box{background:rgba(255,204,0,.08);border:2px solid #ffcc00;border-radius:14px;padding:10px 14px;width:94%;animation:sUp .6s ease both;}
 .swagat-line{font-size:min(3.8vw,16px);color:#ffcc00;line-height:2;font-style:italic;text-shadow:0 0 8px rgba(255,204,0,.4);}
@@ -65,19 +58,36 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
 .divider{width:80%;height:2px;background:linear-gradient(90deg,transparent,#ffcc00,transparent);margin:4px auto;}
 .couple-big{font-size:min(5vw,23px);color:#ffcc00;font-weight:bold;animation:sUp .6s ease .15s both;}
 .hbsm{animation:hbeat 1.2s ease-in-out infinite;display:inline-block;}
-.date-card{background:rgba(255,204,0,.1);border:1.5px solid #ffcc00;border-radius:10px;padding:7px 14px;width:92%;animation:sUp .6s ease .25s both;}
+.date-card{background:rgba(255,204,0,.1);border:1.5px solid #ffcc00;border-radius:10px;padding:6px 14px;width:92%;animation:sUp .6s ease .2s both;}
 .date-card .dt{font-size:min(3vw,12px);color:#ffaa00;}
-.date-card .dv{font-size:min(5vw,22px);color:#ffcc00;font-weight:bold;}
+.date-card .dv{font-size:min(4.8vw,21px);color:#ffcc00;font-weight:bold;}
 .date-card .ds{font-size:min(2.8vw,11px);color:#ffd9a0;}
 .rain-btn{background:linear-gradient(135deg,#ff6b00,#ffcc00);border:none;border-radius:50px;padding:10px 26px;font-size:min(4.2vw,17px);color:#4a1500;font-weight:bold;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;box-shadow:0 4px 18px rgba(255,204,0,.4);animation:sUp .6s ease .4s both;transition:transform .15s;}
 .rain-btn:active{transform:scale(.92);}
+
+/* NIHARTE NAYAN */
+#s-kids{justify-content:center;gap:0;padding:20px 16px;}
+.kids-title{font-size:min(5.5vw,26px);font-weight:bold;color:#ffcc00;text-shadow:0 0 15px rgba(255,204,0,.7);margin-bottom:6px;animation:sUp .6s ease both;}
+.kids-sub{font-size:min(3.2vw,13px);color:#ffaa00;margin-bottom:14px;animation:sUp .6s ease .1s both;}
+.kids-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;animation:sUp .6s ease .2s both;width:100%;}
+.kid-chip{
+  background:rgba(255,204,0,.12);
+  border:1.5px solid #ffcc00;
+  border-radius:20px;
+  padding:6px 14px;
+  font-size:min(3.8vw,16px);
+  color:#ffd9a0;
+  animation:chipIn .4s ease both;
+}
+@keyframes chipIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.kids-footer{font-size:min(3.2vw,13px);color:#ffaa00;margin-top:14px;line-height:1.8;animation:sUp .6s ease .5s both;font-style:italic;}
 
 /* CANVAS */
 #rc{position:fixed;inset:0;pointer-events:none;z-index:999;}
 
 /* DOTS */
-#dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:100;}
-.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,204,0,.3);transition:background .3s,transform .3s;cursor:pointer;}
+#dots{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:100;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,204,0,.3);transition:background .3s,transform .3s;cursor:pointer;}
 .dot.on{background:#ffcc00;transform:scale(1.4);}
 </style>
 </head>
@@ -88,7 +98,7 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
 <div class="screen active" id="s-ganesh">
   <span class="ganesh-big">🙏</span>
   <div class="mantra">विघ्न हरण मंगल करण गौरी पुत्र गणेश<br>प्रथम निमंत्रण आपको ब्रह्मा विष्णु महेश</div>
-  <div class="flowers">🌸 🌺 🌼 🌸 🌺</div>
+  <div class="flowers">� 🌺 🌼 🌸 🌺</div>
 </div>
 
 <!-- S2: NAMES -->
@@ -100,11 +110,9 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
   <div class="nlabel" id="lb2">🎊 वधू</div>
 </div>
 
-<!-- S3: LADKA PHOTO -->
+<!-- S3: LADKA -->
 <div class="screen" id="s-boy">
-  <div class="photo-wrap">
-    <img src="ladka.png" alt="हरिओम नरेटे">
-  </div>
+  <div class="photo-wrap"><img src="ladka.jpg" alt="हरिओम नरेटे"></div>
   <div class="photo-name">हरिओम नरेटे</div>
   <div class="photo-detail">
     <span>सुपुत्र श्री माखनलाल नरेटे</span>
@@ -113,11 +121,9 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
   </div>
 </div>
 
-<!-- S4: LADKI PHOTO -->
+<!-- S4: LADKI -->
 <div class="screen" id="s-girl">
-  <div class="photo-wrap">
-    <img src="ladki.png" alt="विमला ठाकुर">
-  </div>
+  <div class="photo-wrap"><img src="ladki.jpg" alt="विमला ठाकुर"></div>
   <div class="photo-name">विमला ठाकुर</div>
   <div class="photo-detail">
     <span>सुपुत्री श्री सुरेश ठाकुर</span>
@@ -139,7 +145,7 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
 
 <!-- S6: INVITE -->
 <div class="screen" id="s-invite">
-  <span style="font-size:min(8vw,40px);animation:gPulse 2s ease-in-out infinite alternate;">🙏</span>
+  <span style="font-size:min(8vw,38px);animation:gPulse 2s ease-in-out infinite alternate;">🙏</span>
   <div class="swagat-box">
     <div class="swagat-line">"श्री गणेश की कृपा से इस पावन अवसर पर<br>आपको सादर एवं सप्रेम आमंत्रित किया जाता है"</div>
     <div class="swagat-sub">आपकी उपस्थिति इस मंगलमय विवाह समारोह को और भी शोभनीय बनाएगी।</div>
@@ -148,36 +154,64 @@ body{width:100vw;height:100vh;overflow:hidden;background:#1a0500;font-family:'Ge
   <div class="couple-big">हरिओम नरेटे <span class="hbsm">❤️</span> विमला ठाकुर</div>
   <div class="divider"></div>
   <div class="date-card">
+    <div class="dt">� हल्दी समारोह</div>
+    <div class="dv">11 मई 2026 — रविवार</div>
+    <div class="ds">सभी परिजनों एवं मित्रों का स्वागत है</div>
+  </div>
+  <div class="date-card" style="margin-top:5px;">
     <div class="dt">💍 विवाह समारोह</div>
     <div class="dv">12 मई 2026 — मंगलवार</div>
     <div class="ds">ग्राम परसगांव सर्रा, जिला छिंदवाड़ा</div>
   </div>
-  <div class="date-card" style="margin-top:6px;">
+  <div class="date-card" style="margin-top:5px;">
     <div class="dt">🍽️ आशीर्वाद एवं स्वरुचि भोज</div>
     <div class="dv">14 मई 2026 — गुरुवार</div>
     <div class="ds">सभी परिजनों एवं मित्रों का स्वागत है</div>
   </div>
-  <button class="rain-btn" onclick="startRain()">❤️ शुभकामनाएं दें �</button>
+  <button class="rain-btn" onclick="startRain()">❤️ शुभकामनाएं दें 🌸</button>
+</div>
+
+<!-- S7: NIHARTE NAYAN -->
+<div class="screen" id="s-kids">
+  <div class="kids-title">👶 निहारते नयन</div>
+  <div class="kids-sub">इस शुभ अवसर के नन्हे मेहमान</div>
+  <div class="kids-grid" id="kidsGrid"></div>
+  <div class="kids-footer">
+    "इन नन्हे फूलों की मुस्कान से<br>
+    हमारी महफ़िल और भी खिल जाएगी।" 🌸
+  </div>
 </div>
 
 <!-- DOTS -->
 <div id="dots">
-  <div class="dot on"  onclick="goTo(0)"></div>
-  <div class="dot"     onclick="goTo(1)"></div>
-  <div class="dot"     onclick="goTo(2)"></div>
-  <div class="dot"     onclick="goTo(3)"></div>
-  <div class="dot"     onclick="goTo(4)"></div>
-  <div class="dot"     onclick="goTo(5)"></div>
+  <div class="dot on" onclick="goTo(0)"></div>
+  <div class="dot"    onclick="goTo(1)"></div>
+  <div class="dot"    onclick="goTo(2)"></div>
+  <div class="dot"    onclick="goTo(3)"></div>
+  <div class="dot"    onclick="goTo(4)"></div>
+  <div class="dot"    onclick="goTo(5)"></div>
+  <div class="dot"    onclick="goTo(6)"></div>
 </div>
 
 <script>
-// ── SCREENS & AUTO FLOW ──
-const SCREENS = ['s-ganesh','s-names','s-boy','s-girl','s-heart','s-invite'];
+const SCREENS = ['s-ganesh','s-names','s-boy','s-girl','s-heart','s-invite','s-kids'];
+// durations: 0 = no auto-advance
+const DURATIONS = [3000, 5000, 3500, 3500, 2500, 6000, 0];
 let cur = 0;
 let autoTimer = null;
 
-// auto durations (ms) for each screen before moving next
-const DURATIONS = [3000, 5000, 3500, 3500, 0, 0]; // 0 = stay, no auto
+// kids names
+const KIDS = ['Ashish','Rajkumar','Anit','Binit','Abhishek','Krish','Kavya','Abhilasha','Anamika','T.K.K.'];
+
+// build kids grid
+const grid = document.getElementById('kidsGrid');
+KIDS.forEach((name, i) => {
+  const chip = document.createElement('div');
+  chip.className = 'kid-chip';
+  chip.style.animationDelay = (i * 0.08) + 's';
+  chip.textContent = name;
+  grid.appendChild(chip);
+});
 
 function showScreen(idx){
   clearTimeout(autoTimer);
@@ -188,30 +222,30 @@ function showScreen(idx){
 
   // re-trigger photo animation
   if(idx===2||idx===3){
-    const wrap = document.querySelector('#'+SCREENS[idx]+' .photo-wrap');
-    const nm   = document.querySelector('#'+SCREENS[idx]+' .photo-name');
-    const det  = document.querySelector('#'+SCREENS[idx]+' .photo-detail');
-    [wrap,nm,det].forEach(el=>{if(el){el.style.animation='none';void el.offsetWidth;el.style.animation='';}});
+    const el = document.getElementById(SCREENS[idx]);
+    ['.photo-wrap','.photo-name','.photo-detail'].forEach(sel=>{
+      const e=el.querySelector(sel);
+      if(e){e.style.animation='none';void e.offsetWidth;e.style.animation='';}
+    });
   }
 
-  // names animation
+  // re-trigger kids chips
+  if(idx===6){
+    document.querySelectorAll('.kid-chip').forEach(c=>{
+      c.style.animation='none';void c.offsetWidth;c.style.animation='';
+    });
+  }
+
   if(idx===1) startNames();
 
-  // heart auto-cycle
-  if(idx===4) startHeartCycle();
-
-  // schedule next
   if(DURATIONS[idx]>0){
     autoTimer = setTimeout(()=>showScreen(idx+1), DURATIONS[idx]);
   }
 }
 
 function goTo(i){ showScreen(i); }
-
-// start
 showScreen(0);
 
-// ── NAMES ANIM ──
 function startNames(){
   const nm1=document.getElementById('nm1'),nm2=document.getElementById('nm2'),
         vsh=document.getElementById('vsh'),lb1=document.getElementById('lb1'),lb2=document.getElementById('lb2');
@@ -226,30 +260,19 @@ function startNames(){
   },4000);
 }
 
-// ── HEART AUTO CYCLE ──
-// heart screen auto cycles boy photo → girl photo → invite
-let heartCycleTimer = null;
-function startHeartCycle(){
-  clearTimeout(heartCycleTimer);
-  // after 3s show boy again briefly, then girl, then invite
-  heartCycleTimer = setTimeout(()=>{
-    showScreen(5); // go to invite
-  }, 4000);
-}
-
 // ── RAIN ──
 const canvas=document.getElementById('rc');
 const ctx=canvas.getContext('2d');
 function resizeCanvas(){canvas.width=innerWidth;canvas.height=innerHeight;}
 resizeCanvas();window.addEventListener('resize',resizeCanvas);
 
-const EMOJIS=['❤️','🌸','🌺','✨','💕','🌹'];
+const EMOJIS=['❤️','🌸','🌺','✨','💕'];
 let particles=[];
 
 function triggerRain(sec,fast){
   const end=Date.now()+sec*1000;
-  const count=fast?16:4;
-  const interval=fast?30:80;
+  const count=fast?10:4;
+  const interval=fast?35:80;
   function spawn(){
     if(Date.now()>end)return;
     for(let i=0;i<count;i++)spawnP(fast);
@@ -259,19 +282,20 @@ function triggerRain(sec,fast){
 }
 
 function startRain(){
-  for(let i=0;i<70;i++)spawnP(true);
-  triggerRain(5,true);
+  // burst — 40 particles ek saath (kam kiya 80 se)
+  for(let i=0;i<40;i++)spawnP(true);
+  triggerRain(4,true);
 }
 
 function spawnP(fast){
   particles.push({
     x:Math.random()*canvas.width,
-    y:fast?-Math.random()*80:-20,
-    vy:fast?7+Math.random()*8:2+Math.random()*3,
-    vx:(Math.random()-.5)*(fast?5:2),
+    y:fast?-Math.random()*60:-20,
+    vy:fast?9+Math.random()*9:2+Math.random()*3,
+    vx:(Math.random()-.5)*(fast?4:2),
     rot:Math.random()*360,
-    rv:(Math.random()-.5)*(fast?8:4),
-    size:fast?24+Math.random()*28:18+Math.random()*18,
+    rv:(Math.random()-.5)*(fast?7:4),
+    size:fast?22+Math.random()*24:16+Math.random()*16,
     emoji:EMOJIS[Math.floor(Math.random()*EMOJIS.length)],
     alpha:1
   });
@@ -282,7 +306,7 @@ function spawnP(fast){
   particles=particles.filter(p=>p.y<canvas.height+40&&p.alpha>.04);
   particles.forEach(p=>{
     p.y+=p.vy;p.x+=p.vx;p.rot+=p.rv;
-    if(p.y>canvas.height*.6)p.alpha-=.022;
+    if(p.y>canvas.height*.55)p.alpha-=.025;
     ctx.save();
     ctx.globalAlpha=p.alpha;
     ctx.translate(p.x,p.y);
